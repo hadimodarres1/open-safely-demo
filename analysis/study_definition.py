@@ -41,5 +41,32 @@ study = StudyDefinition(
                     "South East": 0.2,
                 },
             },
-        })   
+        }),
+
+    admission_method=patients.admitted_to_hospital(
+        with_admission_method=['21','22','23','28'],
+        returning='admission_method',
+        return_expectations={"rate": "universal",
+        "category":{
+            'ratios':{
+                '21':0.25,
+                 '22':0.25,
+                 '23':0.25,
+                 '28':0.25},
+                 },
+                 }),   
+
+    primary_diagnosis=patients.admitted_to_hospital(
+        with_these_primary_diagnoses=['J120'],
+        returning='primary_diagnosis'),
+
+
 )
+
+#"""
+#        return_expectations={"rate": "universal",
+#        "category":{'ratios':
+#                        {'J120':0.5,
+#                        'J120':0.5}}}),   
+                        
+#"""
