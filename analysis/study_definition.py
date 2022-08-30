@@ -11,7 +11,7 @@ study = StudyDefinition(
         "2019-02-01", "2020-02-01"
     ),
 
-        age=patients.age_as_of(
+    age=patients.age_as_of(
         "2019-09-01",
         return_expectations={
             "rate": "universal",
@@ -44,29 +44,39 @@ study = StudyDefinition(
         }),
 
     admission_method=patients.admitted_to_hospital(
-        with_admission_method=['21','22','23','28'],
+        with_admission_method=['21', '22', '23', '28'],
         returning='admission_method',
-        return_expectations={"rate": "universal",
-        "category":{
-            'ratios':{
-                '21':0.25,
-                 '22':0.25,
-                 '23':0.25,
-                 '28':0.25},
-                 },
-                 }),   
+        return_expectations={
+            "rate": "universal",
+            "category": {
+                'ratios': {
+                    '21': 0.25,
+                    '22': 0.25,
+                    '23': 0.25,
+                    '28': 0.25
+                    },
+                },
+            }),
+
 
     primary_diagnosis=patients.admitted_to_hospital(
-        with_these_primary_diagnoses=['J120'],
-        returning='primary_diagnosis'),
+                    returning='primary_diagnosis',
+                    return_expectations={
+                        "rate": "universal",
+                        "category": {
+                            'ratios': {
+                                'J120': 0.5,
+                                'C910': 0.5
+                                },
+                            },
+                        }),
 
 
 )
 
-#"""
+#
 #        return_expectations={"rate": "universal",
 #        "category":{'ratios':
 #                        {'J120':0.5,
-#                        'J120':0.5}}}),   
-                        
-#"""
+#                        'J120':0.5}}}),                       
+#
